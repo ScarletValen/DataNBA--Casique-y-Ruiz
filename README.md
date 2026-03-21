@@ -15,5 +15,8 @@ Analizar el impacto de la localía en el rendimiento estadístico y el resultado
 ## Objetivos Específicos
 
 -   **A)** Determinar, para cada equipo de la NBA, su porcentaje de victorias como local durante la temporada 2019, y analizar la distribución de dichos porcentajes para evaluar si la ventaja de localía se refleja en el resultado final de los partidos.
+
+(**analizar la distribución de las victorias dado el tipo de lanzamiento para evaluar si la ventaja de localia se refleja en el resultado final del marcador por una mayor eficiencia de lanzamiento como local** Jesús)
+
 -   **B)** Calcular, para cada equipo, la diferencia en su rendimiento promedio como local frente a su rendimiento promedio como visitante en las siguientes estadísticas: puntos anotados (PTS), porcentaje de tiros de campo (FG_PCT), porcentaje de tiros de tres puntos (FG3_PCT), porcentaje de tiros libres (FT_PCT), asistencias (AST) y rebotes totales (REB). Analizar si estas diferencias son, en promedio, favorables a la condición de local.
 -   **C)** Analizar la correlación entre las principales estadísticas de rendimiento (puntos, asistencias y rebotes) de los equipos en sus partidos como local y la victoria en dichos partidos, para identificar qué variable presenta una asociación más fuerte con el éxito en condición de local.
