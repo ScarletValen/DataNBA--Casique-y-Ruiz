@@ -107,5 +107,5 @@ if not perfil.empty:
     c1, c2, c3 = st.columns(3)
     c1.metric("Puntos Local", round(perfil['PTS_home'].values[0], 2))
     c2.metric("Puntos Visita", round(perfil['PTS_away'].values[0], 2))
-   else:
+else:
     st.error("ID de equipo no encontrado.")
