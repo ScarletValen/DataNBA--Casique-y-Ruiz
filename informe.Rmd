@@ -1,10 +1,9 @@
 ---
-title: "Título del Trabajo Final"
+title: "Analisis Estadístico de la temporada de la NBA 2019"
 author:
-- Primer participante
-- Segundo participante
-- Tercer participante
-date: "Febrero 2026"
+- Samuel Ruiz
+- Scarlet Casique
+date: "Abril 2026"
 output:
   pdf_document:
     template: template.tex
@@ -26,7 +25,7 @@ escudo: Latex/Classes/Escudos/faces
 bibliography: bibliografia.bib
 degree: Computación I
 abstract: |
-  Resumen del trabajo de investigación...
+  En el presente trabajo, se analiza el impacto del factor de localía en la NBA durante la temporada de 2019, utilizando metodos de estadística descriptiva (medidas de tendencia central, medidas de dispersion y correlacion), para determinar si los equipos mejoran su rendimiento, siendo locales, a diferencia de cuando juegan de visitante.  Dicho estudio aportara una buena metodología para el analisis de datos, en general.
 ---
 
 ```{r setup, include=FALSE}
@@ -46,43 +45,45 @@ library(tidyverse)
 library(knitr)
 library(kableExtra)
 library(scales)
+library(janitor)
 ```
 
 \chapter*{Introducción}
 
-Introducción del trabajo de investigación
+En la NBA comunmente reconocen el factor de "localía" y dicho factor lo asocian a una gran frecuencia de victorias en los partidos. No obstante, independientemente del resultado final, existe la interrogante, sobre si éste "factor" o "condición" se puede traducir como una mejora real en el rendimiento estadístico de los equipos.
+
+Por ende, el presente trabajo analiza la temporada 2019 con el objetivo de cuantificar el impacto de la localía, enfocandose en métricas claves (puntos, asistencias, rebotes, etc...). El mismo se realizará, mediante el uso de medidas de tendencia central, medidas de dispersión, diagramas de cajas, y correlaciones. Para determinar si los equipos rinden mejor como locales, si la eficiencia de tiro explica sus victorias siendo locales y tambien, para observar cual estadística se asocia fuertemente con el triunfo estando en dicha "condición".
 
 \chapter{Planteamiento del Problema}
-Describir planteamiento del problema\
+
+Si bien el fenómeno de la 'ventaja de localía' es un factor reconocido en el baloncesto profesional por su impacto en los resultados finales, persiste una falta de profundidad en el análisis de las variables que lo componen.
+
+Actualmente, no se ha determinado con precisión si esta superioridad se refleja de manera uniforme en las métricas de rendimiento técnico-táctico de los equipos. Por consiguiente, el presente estudio aborda la ausencia de una caracterización estadística detallada que permita cuantificar el impacto real de la localía por equipo y su correlación directa con la eficacia competitiva durante la temporada 2019 de la NBA.
 
 Argumento final. Debido a esto, se plantea las siguientes preguntas de investigación:\
 
+\textbf{1.} ¿Existe una diferencia estadísticamente significativa entre el porcentaje de victorias como "local", de los equipos de la NBA y su eficiencia de tiros de campo (FG_PCT), tiros de tres puntos (FG3_PCT) y tiros libres (FT_PCT) cuando juegan en casa de frente a cuando juegan de visitante durante la temporada de 2019?
 
-\textbf{1.}	Pregunta1\
+\textbf{2.} ¿Los equipos en promedio anotan más puntos, lanzan con mejor porcentaje (en tiros de campo, triples y libres), dan más asistencias y capturan más rebotes, cuando juegan de locales, a diferencia de cuando juegan de visitantes?
 
-\textbf{2.}	Pregunta2\
-
-\textbf{3.}	Pregunta3\
-
+\textbf{3.} En base a las estadísticas de los equipos en sus partidos como local (los puntos, las asistencias, y los rebotes) ¿cuál tiene una correlación más alta con la victoria?
 
 \section{Justificación}
 
-Justificación del trabajo de investigación\
+Este trabajo se realiza debido a la necesidad de aplicar técnicas de estadística descriptiva junto a herramientas computacionales, para cuantificar, de manera objetiva, el impacto real de la ventaja de la localía en el rendimiento de los equipos de la NBA. Ademas este trabajo ayudaría a entrenadores o aficionados, a identificar cuales aspectos específicos del juego, favorecen más a los equipos, al estar jugando en casa. Cabe mencionar, que este estudio tambien aporta una metodología replicable, haciendo uso de R, para el análisis exploratorio y descriptivo de grandes volúmenes de información.
 
 \section{Objetivos}
- 
+
 \subsection{Objetivo General}
 \begin{itemize}
-  \item{Describir objetivo general del trabajo de investigación}
+  \item{Analizar el impacto de la localía en el rendimiento estadístico y el resultado final de los equipos de la NBA durante la temporada 2019, comparando los factores de anotación y eficiencia entre partidos de locales y visitantes.}
 \end{itemize}
-
 \subsection{Objetivos Específicos}
-\begin{itemize}
-  \item{Describir objetivo 1 del trabajo de investigación}
-  \item{Describir objetivo 2 del trabajo de investigación}
-  \item{Describir objetivo 3 del trabajo de investigación}
-\end{itemize}
-
+\begin{enumerate}
+  \item Determinar, para cada equipo de la NBA, su porcentaje de victorias como local durante la temporada 2019, y analizar la distribución de las victorias dado el tipo de lanzamiento para evaluar si la ventaja de localia se refleja en el resultado final del marcador por una mayor eficiencia de lanzamiento como local.
+  \item Calcular, para cada equipo, la diferencia en su rendimiento promedio como local frente a su rendimiento promedio como visitante en las siguientes estadísticas: puntos anotados, porcentaje de tiros de campo, porcentaje de tiros de tres puntos, porcentaje de tiros libres, asistencias y rebotes totales. Analizar si estas diferencias son, en promedio, favorables a la condición de local.
+  \item Analizar la correlación entre las principales estadísticas de rendimiento (puntos, asistencias y rebotes) de los equipos en sus partidos como local y la victoria en dichos partidos, para identificar qué variable presenta una asociación más fuerte con el éxito en condición de local.
+\end{enumerate}
 
 \section{Cobertura}
 
@@ -93,7 +94,7 @@ Describir la cobertura Horizontal del trabajo de investigación\
 \begin{table}[ht]
 \centering
 \caption{Variables consideradas} 
-\resizebox{10cm}{!} {
+\resizebox{11cm}{!} {
 \begin{tabular}{ccc}
   \hline
 \ \ \ \ \ NOMBRE DE LA VARIABLE \\ 
@@ -108,19 +109,17 @@ VARIABLE n\\
 
 \subsection{Vertical}
 
-Describir la cobertura Vertical del trabajo de investigación
-
+La cobertura del trabajo de investigación, toma un total de 1.242 observaciones (o registros) en base al dataset original. Cabe destacar que cada fila representa un partido único en la NBA, y el alcance del dataset, abarca desde la temporada 2013 hasta la 2022, en lo que en el mismo se puede analizar de manera múltiple; solo que en la presente investigación tomaremos la temporada 2019
 
 \section{Periodo de Referencia}
 
-Describir la fuente y el Periodo de Referencia utilizado en el trabajo de investigación
-
+La fuente de los datos proviene del repositorio de Kaggle. El periodo de referencia competente
+ para el analisis descriptivo, se centrara en la temporada 2019; donde las consistencia de los datos es mejor. Y el procesamiento de la información se realizó con el corte en abril de 2026
 \section{Variables}
 
-Describir la variable en estudio en el trabajo de investigación
+La variable de "interés" en el estudio es (HOME_TEAM_WINS), la cual representa el éxito competitivo por parte del equipo local
 
 \chapter{Marco Teórico}
-
 
 \section{Bases Teóricas}
 
@@ -138,10 +137,10 @@ Descripción de la definición 2\
 
 Descripción de la definición n\
 
-
 \chapter{Marco Metódico}
+
 En esta sección se presentan las metodologías y/o test necesarios relacionados con la práctica divulgada en el marco teórico, así como las fuentes de datos.
- 
+
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
 Desarrollo\
@@ -182,13 +181,11 @@ Descripción\
 
 \textbf{1.-} Conclusion 1 del trabajo de investigación.\
 
-\textbf{Recomendación} 
-Recomendación 1 del trabajo de investigación.\
+\textbf{Recomendación} Recomendación 1 del trabajo de investigación.\
 
 \textbf{2.-} Conclusion 2 del trabajo de investigación.\
 
-\textbf{Recomendación} 
-Recomendación 2 del trabajo de investigación.\
+\textbf{Recomendación} Recomendación 2 del trabajo de investigación.\
 
 \textbf{n.-} Conclusion n del trabajo de investigación.\
 
@@ -202,4 +199,3 @@ Recomendación 2 del trabajo de investigación.\
 \chapter{Anexo B}
 
 \chapter{Anexo C}
-
