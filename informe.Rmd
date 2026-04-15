@@ -91,30 +91,13 @@ Este trabajo se realiza debido a la necesidad de aplicar técnicas de estadísti
 
 Describir la cobertura Horizontal del trabajo de investigación\
 
-\begin{table}[ht]
-\centering
-\caption{Variables consideradas} 
-\resizebox{11cm}{!} {
-\begin{tabular}{ccc}
-  \hline
-\ \ \ \ \ NOMBRE DE LA VARIABLE \\ 
-  \hline
-   VARIABLE 1 \\ 
-VARIABLE 2\\ 
-VARIABLE n\\ 
-   \hline
-\end{tabular}
-}
-\end{table}
-
 \subsection{Vertical}
 
 La cobertura del trabajo de investigación, toma un total de 1.242 observaciones (o registros) en base al dataset original. Cabe destacar que cada fila representa un partido único en la NBA, y el alcance del dataset, abarca desde la temporada 2013 hasta la 2022, en lo que en el mismo se puede analizar de manera múltiple; solo que en la presente investigación tomaremos la temporada 2019
 
 \section{Periodo de Referencia}
 
-La fuente de los datos proviene del repositorio de Kaggle. El periodo de referencia competente
- para el analisis descriptivo, se centrara en la temporada 2019; donde las consistencia de los datos es mejor. Y el procesamiento de la información se realizó con el corte en abril de 2026
+La fuente de los datos proviene del repositorio de (https://www.kaggle.com/datasets). El periodo de referencia competente para el analisis descriptivo, se centrara en la temporada 2019; donde las consistencia de los datos es mejor. Y el procesamiento de la información se realizó con el corte en abril de 2026
 \section{Variables}
 
 La variable de "interés" en el estudio es (HOME_TEAM_WINS), la cual representa el éxito competitivo por parte del equipo local
@@ -123,20 +106,29 @@ La variable de "interés" en el estudio es (HOME_TEAM_WINS), la cual representa 
 
 \section{Bases Teóricas}
 
-Resumen de las bases teoricas explicadas en el capitulo y su importancia\
+ El presente capitulo expone los fundamentos estadísticos para analizar el rendimiento de los equipos de la NBA durante la temporada 2019. Partiendo de la hipótesis de que la ventaja de jugar como local puede cuantificarse mediante indicadores específicos tales como puntos, porcentajes de tiros, asistencias y rebotes.
+ 
+ Para ello se emplearan herramientas de estadística descriptiva que permiten resumir, visualizar y comparar los datos sin necesidad de formular hipótesis complejas.
+ 
+ Por ende, la comprensión de estos conceptos es fundamental para interpretar, si la localía se traduce en una mejora real del rendimiento.
 
-\subsection{Definición 1}
+\subsection{Media Aritenática (Promedio)}
 
-Descripción de la definición 1\
+Para una variable cuantitativa cualquiera, por ejemplo: los puntos anotados por un equipo como local (PTS_HOME). sean $x_1, x_2. \ldots, x_n$ correspondientes a cada partido; la media muestral se define como:
 
-\subsection{Definición 2}
+$$\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$$ 
+  Por lo cual, la media aritmetica compete a los calculos de: porcentajes de victorias como local por temporada, la diferencia de puntos promedio entre locales y visitantes, promedio de asistencia  del local cuando gana vs cuando pierde, promedio de tiros libres por temporada, promedio de puntos totales por partido, para comprar el porcentaje de aciertos en triples entre local y visitantes y para realizar un top 10 de equipos con mayor efectividad como local
 
-Descripción de la definición 2\
+\subsection{Desviación estándar}
 
-\subsection{Definición n}
+La desviación estandar mide la dispersión promedio de los datos con respecto a su media; una desviación pequeña indica un rendimiento consistente, dicha desviación se define como : $$ s = \sqrt {\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2} $$
+ En éste estudio, la desviación estandar se utilizará para calcular sobre los partidos de  la temporada 2019 en cada equipo, específicamente se comprara si los equipos son mas regulares jugando en casa que de visitante  
+ 
+\subsection{Correlación de Pearson}
 
-Descripción de la definición n\
+Para medir la fuerza y dirección de la relación lineal entre dos variables cuantitativas, se utiliza el coeficiente de correlación de pearson $r$, dadas 2 variables $x$ e $y$, se define como: $$ r =  \frac{\sum(x - \bar{x})(y - \bar{y})}{\sqrt{\sum(x - \bar{x})^2 \sum (y - \bar{y})^2}} $$
 
+En este estudio, se calculara la correlación entre las estadísticas de los equipos como local (porcentajes de tiro de campo, porcentajes de tiros libres, porcentaje de triples, asistencias y rebotes) y la variable HOME_TEAM_WINS, para identificar que métrica se asocia mas fuertemente con el éxito en condicion de local
 \chapter{Marco Metódico}
 
 En esta sección se presentan las metodologías y/o test necesarios relacionados con la práctica divulgada en el marco teórico, así como las fuentes de datos.
